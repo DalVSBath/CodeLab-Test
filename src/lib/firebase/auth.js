@@ -3,6 +3,7 @@ import {
   signInWithPopup,
   onAuthStateChanged as _onAuthStateChanged,
   onIdTokenChanged as _onIdTokenChanged,
+  SAMLAuthProvider
 } from "firebase/auth";
 
 import { auth } from "@/src/lib/firebase/clientApp";
@@ -16,7 +17,7 @@ export function onIdTokenChanged(cb) {
 }
 
 export async function signInWithGoogle() {
-  const provider = new GoogleAuthProvider();
+  const provider = new SAMLAuthProvider("saml.bath");
 
   try {
     await signInWithPopup(auth, provider);
